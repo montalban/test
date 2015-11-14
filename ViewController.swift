@@ -10,16 +10,19 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var someInt: UITextField!
+    
+    @IBOutlet weak var anotherInt: UITextField!
+    
+    @IBAction func nextView(sender: AnyObject) {
+        appDelegate().index = Int(someInt.text!)
+        globalIndex = Int(anotherInt.text!)!
+
+        let vc = storyboard!.instantiateViewControllerWithIdentifier("SecondViewController") as! SecondViewController
+        self.presentViewController(vc, animated: true, completion: nil)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        let singletonIndex = 2
-        appDelegate().index = singletonIndex
-        print("index \(appDelegate().index)")
-        
-        let globalIndex = "8"
-        print("global \(globalIndex)")
-        
-        
         // Do any additional setup after loading the view, typically from a nib.
     }
 
